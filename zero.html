@@ -1,0 +1,76 @@
+formlist()
+function formlist() {
+    fetch("http://localhost:3000/employees")
+        .then((response)=> {
+            return response.json(); //converted to object// json format
+
+        })
+        .then((objectdata)=> {
+            // console.log(data);
+            let data1="";
+            objectdata.map((values)=>{
+                data1+=`
+                 <tr>
+                <th scope="row "></th>
+                <td><img src="/image/id1.png" alt="">${values.salutation}.${values.firstame}.${values.lastName}</td>
+                <td>${values.email}</td>
+                <td>${values.phone}</td>
+                <td>${values.gender}</td>
+                <td>${values.dob}</td>
+                <td>${values.country}</td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary " type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fa-solid fa-ellipsis"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fa-regular fa-eye"></i>view
+                                    details</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="editformOpen()"><i
+                                        class="fa-solid fa-pencil"></i>Edit</a></li>
+                            <li><a class="dropdown-item" href="#"><i
+                                        class="fa-solid fa-trash"></i>Delete</a></li>
+                        </ul>
+                    </div>
+                </td>
+
+            </tr> `
+            });
+            document.getElementById("user_details").innerHTML=data1;
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+
+
+}
+
+
+var arrays = [{
+    name :"sree",
+    gender :"f",
+    age :22,
+    department : "abc"
+    
+  },
+      {
+    name :"sree",
+    gender :"f",
+    age :22,
+    department : "abc"
+    
+  },
+   {
+    name :"sree",
+    gender :"f",
+    age :22,
+    department : "abc"
+    
+  }]
+  
+  
+  arrays.forEach((element) => {
+    console.log(element)
+  });
+  
